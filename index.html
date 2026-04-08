@@ -111,35 +111,40 @@
   .hero-image-stack img:nth-child(2) { width: 50%; height: 45%; bottom: 0; left: 0; filter: grayscale(40%) sepia(15%); }
 
   .proposal-cta {
-    margin-top: 28px;
-  }
-  .proposal-cta a {
-    display: inline-block;
-    padding: 14px 18px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(0,0,0,0.02);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .proposal-label {
-    display: block;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--ash);
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-  .proposal-arrow {
-    font-size: 0.9rem;
-    color: var(--ink);
-  }
-  .proposal-cta a:hover {
-    transform: translateY(-2px);
-    border-color: var(--ink);
-    background: rgba(0,0,0,0.05);
-  }
+  margin-top: 36px;
+}
+
+.proposal-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.02);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.proposal-label {
+  display: inline-block;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--ash);
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.proposal-arrow {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.proposal-cta a:hover {
+  border-color: var(--ink);
+  background: rgba(0,0,0,0.04);
+}
 
   .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
   section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
