@@ -1,12 +1,64 @@
-<div class="hero-image">
-    <img src="images/img00038.jpg" alt="Tokyo Street Scene 1" style="width: 100%; height: auto; display: block;">
-</div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A City That Never Existed - Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #0a0a0a; --text-color: #e0e0e0; --accent-color: #c5a059; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Cormorant Garamond', 'Noto Serif JP', serif; margin: 0; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 80px; }
+        h1 { font-size: 3rem; font-weight: 300; letter-spacing: 0.2rem; color: var(--accent-color); margin-bottom: 10px; }
+        .hero-image { width: 100%; margin: 40px 0; border: 1px solid #333; }
+        .hero-image img { width: 100%; height: auto; display: block; filter: grayscale(20%); transition: filter 0.5s; }
+        .hero-image img:hover { filter: grayscale(0%); }
+        .content-section { margin-bottom: 60px; }
+        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--accent-color); display: inline-block; padding-bottom: 5px; margin-bottom: 30px; font-weight: 400; }
+        p { font-size: 1.1rem; margin-bottom: 20px; text-align: justify; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .gallery-item { border: 1px solid #222; overflow: hidden; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        footer { text-align: center; padding: 40px 0; border-top: 1px solid #222; color: #666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>A City That Never Existed</h1>
+            <p>A Proposal for "Collectible Brand Artifacts" Model</p>
+        </header>
 
-<div class="gallery-grid">
-    <div class="gallery-item">
-        <img src="images/img00074.jpg" alt="Tokyo Street Scene 2">
+        <section class="content-section">
+            <div class="hero-image">
+                <img src="images/img00038.jpg" alt="Tokyo Street Scene - Main Visual">
+            </div>
+            <h2>Concept: Purified Urbanity</h2>
+            <p>都市の断片を抽出し、現実とは異なる「純化された東京」を構築する。このプロジェクトは、単なるストリートスナップの集積ではなく、人々の記憶の中にだけ存在する架空の都市体験を、高級なマテリアル（チョコレート）と共に提供するB2B2Cビジネスモデルの提案です。</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Gallery: Fragmentary Memories</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/img00074.jpg" alt="Gallery 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img00007.jpg" alt="Gallery 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img00012.jpg" alt="Gallery 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img00022.jpg" alt="Gallery 4">
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Yoshihisa Sakamoto. All Rights Reserved.</p>
+        </footer>
     </div>
-    <div class="gallery-item">
-        <img src="images/img00007.jpg" alt="Tokyo Street Scene 3">
-    </div>
-    </div>
+</body>
+</html>
