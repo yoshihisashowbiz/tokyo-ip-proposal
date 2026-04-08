@@ -1,64 +1,293 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A City That Never Existed - Proposal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@200;400&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg-color: #0a0a0a; --text-color: #e0e0e0; --accent-color: #c5a059; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Cormorant Garamond', 'Noto Serif JP', serif; margin: 0; line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; margin-bottom: 80px; }
-        h1 { font-size: 3rem; font-weight: 300; letter-spacing: 0.2rem; color: var(--accent-color); margin-bottom: 10px; }
-        .hero-image { width: 100%; margin: 40px 0; border: 1px solid #333; }
-        .hero-image img { width: 100%; height: auto; display: block; filter: grayscale(20%); transition: filter 0.5s; }
-        .hero-image img:hover { filter: grayscale(0%); }
-        .content-section { margin-bottom: 60px; }
-        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--accent-color); display: inline-block; padding-bottom: 5px; margin-bottom: 30px; font-weight: 400; }
-        p { font-size: 1.1rem; margin-bottom: 20px; text-align: justify; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-        .gallery-item { border: 1px solid #222; overflow: hidden; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        footer { text-align: center; padding: 40px 0; border-top: 1px solid #222; color: #666; font-size: 0.9rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A City That Never Existed — Licensing Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f0d;
+    --paper: #f5f2ec;
+    --ash: #9a9590;
+    --chemical: #c8b89a;
+    --ghost: #7a8a8f;
+    --line: rgba(15,15,13,0.12);
+    --accent: #2a2a26;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  h1, h2, h3 { font-weight: 300; letter-spacing: -0.01em; }
+  .mono { font-family: 'Courier Prime', 'Courier New', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 40px; }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0; z-index: 100; padding: 24px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    mix-blend-mode: multiply;
+  }
+  nav .wordmark { font-family: 'Courier Prime', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+  nav .nav-right { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); }
+
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: end; padding: 120px 40px 80px; max-width: 960px; margin: 0 auto; gap: 60px; }
+  .hero-label { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 32px; display: block; }
+  .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.0; font-style: italic; margin-bottom: 40px; }
+  .hero h1 em { font-style: normal; display: block; font-size: 0.6em; letter-spacing: 0.05em; color: var(--ash); margin-bottom: 8px; font-family: 'Courier Prime', monospace; text-transform: uppercase; }
+  .hero-statement { font-size: 1.1rem; line-height: 1.8; color: var(--accent); max-width: 380px; border-left: 1px solid var(--line); padding-left: 24px; }
+  .hero-right { display: flex; flex-direction: column; gap: 1px; align-self: center; }
+  .hero-image-stack { position: relative; height: 480px; }
+  .hero-image-stack img { position: absolute; object-fit: cover; filter: grayscale(20%); }
+  .hero-image-stack img:nth-child(1) { width: 75%; height: 70%; top: 0; right: 0; }
+  .hero-image-stack img:nth-child(2) { width: 50%; height: 45%; bottom: 0; left: 0; filter: grayscale(40%) sepia(15%); }
+
+  .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
+  section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
+  .section-label { font-family: 'Courier Prime', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ash); margin-bottom: 60px; display: flex; align-items: center; gap: 16px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 120px; }
+
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .concept-text h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; margin-bottom: 32px; font-style: italic; }
+  .concept-text p { font-size: 1.05rem; line-height: 1.85; color: var(--accent); margin-bottom: 20px; }
+  .series-cards { display: flex; flex-direction: column; gap: 2px; }
+  .series-card { padding: 32px; background: rgba(15,15,13,0.03); border: 1px solid var(--line); transition: background 0.3s ease; }
+  .series-card:hover { background: rgba(15,15,13,0.06); }
+  .series-card .series-name { font-family: 'Courier Prime', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ghost); margin-bottom: 12px; display: block; }
+  .series-card.chemical .series-name { color: var(--chemical); filter: saturate(1.5) brightness(0.8); }
+  .series-card h3 { font-size: 1.4rem; margin-bottom: 12px; font-style: italic; }
+  .series-card p { font-size: 0.9rem; line-height: 1.7; color: var(--ash); }
+
+  .works-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
+  .works-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-bottom: 3px; }
+  .work-item { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; }
+  .work-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.4s ease; filter: grayscale(15%); }
+  .work-item:hover img { transform: scale(1.04); filter: grayscale(0%); }
+  .work-item .work-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 12px 12px; background: linear-gradient(transparent, rgba(15,15,13,0.7)); opacity: 0; transition: opacity 0.3s ease; }
+  .work-item:hover .work-label { opacity: 1; }
+  .work-label span { font-family: 'Courier Prime', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,242,236,0.9); display: block; }
+  .work-label strong { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-style: italic; font-weight: 300; color: var(--paper); display: block; margin-top: 2px; }
+  .works-series-label { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); padding: 8px 0; border-top: 1px solid var(--line); margin-bottom: 3px; }
+
+  .model-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
+  .model-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; }
+  .model-intro h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; font-style: italic; }
+  .model-intro p { font-size: 1rem; line-height: 1.85; color: var(--accent); padding-top: 8px; }
+  .model-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .tier { padding: 40px 32px; border: 1px solid var(--line); position: relative; overflow: hidden; }
+  .tier::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--ink); opacity: 0.08; }
+  .tier-num { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 20px; display: block; }
+  .tier h3 { font-size: 1.15rem; font-style: italic; margin-bottom: 8px; }
+  .tier .tier-desc { font-size: 0.85rem; color: var(--ash); line-height: 1.6; margin-bottom: 24px; }
+  .tier .tier-price { font-family: 'Courier Prime', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--ink); border-top: 1px solid var(--line); padding-top: 20px; line-height: 1.8; }
+
+  .pilot-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
+  .pilot-box { border: 1px solid var(--ink); padding: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; }
+  .pilot-box::before { content: 'Pilot Package'; position: absolute; top: -10px; left: 40px; background: var(--paper); padding: 0 12px; font-family: 'Courier Prime', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); }
+  .pilot-left h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.2; font-style: italic; margin-bottom: 20px; }
+  .pilot-left p { font-size: 0.95rem; line-height: 1.8; color: var(--accent); }
+  .pilot-right { border-left: 1px solid var(--line); padding-left: 60px; }
+  .pilot-line { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+  .pilot-line:last-of-type { border-bottom: none; }
+  .pilot-line .label { color: var(--ash); font-size: 0.82rem; }
+  .pilot-line .value { font-family: 'Courier Prime', monospace; font-size: 0.78rem; letter-spacing: 0.03em; }
+  .pilot-total { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0 0; margin-top: 8px; }
+  .pilot-total .label { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); }
+  .pilot-total .value { font-size: 1.4rem; font-style: italic; }
+
+  .contact-section { padding: 100px 40px 140px; max-width: 960px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+  .contact-left h2 { font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1; font-style: italic; margin-bottom: 32px; }
+  .contact-left p { font-size: 0.95rem; line-height: 1.8; color: var(--accent); max-width: 340px; }
+  .contact-right { display: flex; flex-direction: column; gap: 32px; padding-bottom: 8px; }
+  .contact-item { border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+  .contact-item .contact-type { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 8px; display: block; }
+  .contact-item a { font-size: 1.05rem; color: var(--ink); text-decoration: none; font-style: italic; transition: color 0.2s; }
+  .contact-item a:hover { color: var(--ash); }
+  .work-link { display: inline-flex; align-items: center; gap: 10px; font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ash); text-decoration: none; border: 1px solid var(--line); padding: 14px 24px; transition: all 0.3s ease; margin-top: 16px; }
+  .work-link:hover { border-color: var(--ink); color: var(--ink); }
+  .work-link::after { content: '→'; font-style: normal; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 40px; max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+    .hero-image-stack { display: none; }
+    .concept-grid, .model-intro, .model-tiers, .pilot-box, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    section, .works-section, .model-section, .pilot-section, .contact-section { padding: 60px 24px; }
+    .works-grid { grid-template-columns: repeat(3, 1fr); }
+    .pilot-right { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 40px; }
+    .pilot-box { padding: 40px 28px; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>A City That Never Existed</h1>
-            <p>A Proposal for "Collectible Brand Artifacts" Model</p>
-        </header>
 
-        <section class="content-section">
-            <div class="hero-image">
-                <img src="images/img00038.jpg" alt="Tokyo Street Scene - Main Visual">
-            </div>
-            <h2>Concept: Purified Urbanity</h2>
-            <p>都市の断片を抽出し、現実とは異なる「純化された東京」を構築する。このプロジェクトは、単なるストリートスナップの集積ではなく、人々の記憶の中にだけ存在する架空の都市体験を、高級なマテリアル（チョコレート）と共に提供するB2B2Cビジネスモデルの提案です。</p>
-        </section>
+<nav>
+  <a href="#" class="wordmark">A City That Never Existed</a>
+  <span class="nav-right">Licensing Proposal — 2026</span>
+</nav>
 
-        <section class="content-section">
-            <h2>Gallery: Fragmentary Memories</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/img00074.jpg" alt="Gallery 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img00007.jpg" alt="Gallery 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img00012.jpg" alt="Gallery 3">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img00022.jpg" alt="Gallery 4">
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Yoshihisa Sakamoto. All Rights Reserved.</p>
-        </footer>
+<div class="hero">
+  <div class="hero-left">
+    <span class="hero-label">Yoshihisa Sakamoto — Tokyo</span>
+    <h1><em>A City That</em> Never<br>Existed</h1>
+    <p class="hero-statement">
+      A structured visual IP built from Tokyo's residual matter. Not photography. Not décor. The generation of a place that cannot be visited — only inhabited.
+    </p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-stack">
+      <img src="images/img00038.jpg" alt="Ghost 01 — Threshold">
+      <img src="images/img00074.jpg" alt="Chemical 02 — Reaction">
     </div>
+  </div>
+</div>
+
+<hr class="rule" style="max-width:960px;margin:0 auto;">
+
+<section>
+  <div class="section-label">01 — Concept</div>
+  <div class="concept-grid">
+    <div class="concept-text">
+      <h2>Two series.<br>One impossible city.</h2>
+      <p>Every city produces residue — light that doesn't belong, surfaces that outlast their purpose, reactions that occur without witnesses. TOKYO IP extracts these moments and reconstitutes them as a coherent visual system.</p>
+      <p>This is intellectual property, not decoration. The works do not illustrate Tokyo. They generate a Tokyo that never existed — available exclusively through licensed deployment.</p>
+    </div>
+    <div class="series-cards">
+      <div class="series-card">
+        <span class="series-name">Series I — Ghost</span>
+        <h3>Residual Tokyo</h3>
+        <p>What the city leaves behind after attention has moved on. Threshold, passage, sediment, periphery — five works tracing the archaeology of an ordinary moment.</p>
+      </div>
+      <div class="series-card chemical">
+        <span class="series-name">Series II — Chemical</span>
+        <h3>Synthetic Tokyo</h3>
+        <p>The city as reaction: severance, precipitation, saturation, cooling — five works mapping the physics of urban intensity at the moment it exceeds itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:960px;margin:0 auto;">
+
+<div class="works-section">
+  <div class="section-label">02 — The Works</div>
+  <div class="works-series-label">Ghost — Residual Tokyo</div>
+  <div class="works-grid">
+    <div class="work-item"><img src="images/img00038.jpg" alt="Threshold"><div class="work-label"><span>Ghost — 01</span><strong>Threshold</strong></div></div>
+    <div class="work-item"><img src="images/img00064.jpg" alt="Passage"><div class="work-label"><span>Ghost — 02</span><strong>Passage</strong></div></div>
+    <div class="work-item"><img src="images/img00012.jpg" alt="Residue"><div class="work-label"><span>Ghost — 03</span><strong>Residue</strong></div></div>
+    <div class="work-item"><img src="images/img00022.jpg" alt="Periphery"><div class="work-label"><span>Ghost — 04</span><strong>Periphery</strong></div></div>
+    <div class="work-item"><img src="images/img00076.jpg" alt="Sediment"><div class="work-label"><span>Ghost — 05</span><strong>Sediment</strong></div></div>
+  </div>
+
+  <div class="works-series-label" style="margin-top:40px;">Chemical — Synthetic Tokyo</div>
+  <div class="works-grid">
+    <div class="work-item"><img src="images/img00055.jpg" alt="Severance"><div class="work-label"><span>Chemical — 01</span><strong>Severance</strong></div></div>
+    <div class="work-item"><img src="images/img00074.jpg" alt="Reaction"><div class="work-label"><span>Chemical — 02</span><strong>Reaction</strong></div></div>
+    <div class="work-item"><img src="images/img00007.jpg" alt="Precipitation"><div class="work-label"><span>Chemical — 03</span><strong>Precipitation</strong></div></div>
+    <div class="work-item"><img src="images/img00071.jpg" alt="Saturation"><div class="work-label"><span>Chemical — 04</span><strong>Saturation</strong></div></div>
+    <div class="work-item"><img src="images/img00045.jpg" alt="Cooling"><div class="work-label"><span>Chemical — 05</span><strong>Cooling</strong></div></div>
+  </div>
+</div>
+
+<hr class="rule" style="max-width:960px;margin:0 auto;">
+
+<div class="model-section">
+  <div class="section-label">03 — Licensing Model</div>
+  <div class="model-intro">
+    <h2>Three layers.<br>One continuous relationship.</h2>
+    <p>TOKYO IP does not sell images. It licenses a world — deployed across space, sustained over time, calibrated to the specific character of each environment.</p>
+  </div>
+  <div class="model-tiers">
+    <div class="tier"><span class="tier-num">Layer 01</span><h3>Concept Design</h3><p class="tier-desc">Spatial narrative development. Unique to each property.</p><div class="tier-price">¥3,000,000 — ¥10,000,000</div></div>
+    <div class="tier"><span class="tier-num">Layer 02</span><h3>Production</h3><p class="tier-desc">Large-format output, installation coordination.</p><div class="tier-price">¥500,000 — ¥1,500,000<br>per work</div></div>
+    <div class="tier"><span class="tier-num">Layer 03</span><h3>License</h3><p class="tier-desc">Annual licensing fee covering exclusive deployment rights.</p><div class="tier-price">¥1,000,000 — ¥5,000,000<br>per year</div></div>
+  </div>
+</div>
+
+<hr class="rule" style="max-width:960px;margin:0 auto;">
+
+<div class="pilot-section">
+  <div class="section-label">04 — Entry Point</div>
+  <div class="pilot-box">
+    <div class="pilot-left">
+      <h2>One floor.<br>One world.<br>One decision.</h2>
+      <p>The pilot package is designed for a single floor or thematic zone — a contained deployment that demonstrates the full scope of the IP.</p>
+    </div>
+    <div class="pilot-right">
+      <div class="pilot-line"><span class="label">Concept design</span><span class="value">¥3,000,000</span></div>
+      <div class="pilot-line"><span class="label">5 works (production)</span><span class="value">¥2,500,000</span></div>
+      <div class="pilot-line"><span class="label">Annual license</span><span class="value">¥1,000,000</span></div>
+      <div class="pilot-total"><span class="label">Total — Year 1</span><span class="value">¥6,500,000</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule" style="max-width:960px;margin:0 auto;">
+
+<div class="contact-section">
+  <div class="section-label">05 — Contact</div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2>Let's build<br>something<br>that stays.</h2>
+      <p>All inquiries regarding licensing, spatial deployment, or collaboration are handled directly.</p>
+      <a href="#" target="_blank" class="work-link">View the works</a>
+    </div>
+    <div class="contact-right">
+      <div class="contact-item"><span class="contact-type">Email</span><a href="mailto:yoshihisa.show.biz@gmail.com">yoshihisa.show.biz@gmail.com</a></div>
+      <div class="contact-item"><span class="contact-type">Instagram</span><a href="https://www.instagram.com/yoshihisa_sakamoto/" target="_blank">@yoshihisa_sakamoto</a></div>
+      <div class="contact-item"><span class="contact-type">Author</span><a href="#">Yoshihisa Sakamoto — Tokyo</a></div>
+    </div>
+  </div>
+</div>
+
+<footer style="border-top:1px solid var(--line);padding:32px 40px;max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+  <span>© 2026 Yoshihisa Sakamoto — A City That Never Existed</span>
+  <span>All rights reserved — Licensing only</span>
+</footer>
+
+<script>
+  // Simple fade-in effect
+  document.addEventListener('DOMContentLoaded', () => {
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  });
+</script>
+
 </body>
 </html>
