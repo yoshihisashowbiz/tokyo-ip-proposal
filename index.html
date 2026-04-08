@@ -39,7 +39,6 @@
   }
 
   h1, h2, h3 { font-weight: 300; letter-spacing: -0.01em; }
-  .mono { font-family: 'Courier Prime', 'Courier New', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
   .container { max-width: 960px; margin: 0 auto; padding: 0 40px; }
 
   nav {
@@ -101,20 +100,6 @@
   .tier .tier-desc { font-size: 0.85rem; color: var(--ash); line-height: 1.6; margin-bottom: 24px; }
   .tier .tier-price { font-family: 'Courier Prime', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--ink); border-top: 1px solid var(--line); padding-top: 20px; line-height: 1.8; }
 
-  .pilot-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
-  .pilot-box { border: 1px solid var(--ink); padding: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; }
-  .pilot-box::before { content: 'Pilot Package'; position: absolute; top: -10px; left: 40px; background: var(--paper); padding: 0 12px; font-family: 'Courier Prime', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); }
-  .pilot-left h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.2; font-style: italic; margin-bottom: 20px; }
-  .pilot-left p { font-size: 0.95rem; line-height: 1.8; color: var(--accent); }
-  .pilot-right { border-left: 1px solid var(--line); padding-left: 60px; }
-  .pilot-line { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
-  .pilot-line:last-of-type { border-bottom: none; }
-  .pilot-line .label { color: var(--ash); font-size: 0.82rem; }
-  .pilot-line .value { font-family: 'Courier Prime', monospace; font-size: 0.78rem; letter-spacing: 0.03em; }
-  .pilot-total { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0 0; margin-top: 8px; }
-  .pilot-total .label { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); }
-  .pilot-total .value { font-size: 1.4rem; font-style: italic; }
-
   .contact-section { padding: 100px 40px 140px; max-width: 960px; margin: 0 auto; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
   .contact-left h2 { font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1; font-style: italic; margin-bottom: 32px; }
@@ -131,17 +116,12 @@
   footer { border-top: 1px solid var(--line); padding: 32px 40px; max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
   footer span { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); }
 
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
   @media (max-width: 700px) {
     .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
     .hero-image-stack { display: none; }
-    .concept-grid, .model-intro, .model-tiers, .pilot-box, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    section, .works-section, .model-section, .pilot-section, .contact-section { padding: 60px 24px; }
+    .concept-grid, .model-intro, .model-tiers, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    section, .works-section, .model-section, .contact-section { padding: 60px 24px; }
     .works-grid { grid-template-columns: repeat(3, 1fr); }
-    .pilot-right { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 40px; }
-    .pilot-box { padding: 40px 28px; }
   }
 </style>
 </head>
@@ -197,42 +177,38 @@
 
 <div class="works-section">
   <div class="section-label">02 — The Works</div>
-  <div class="how-it-works-section" style="padding: 40px 0 80px; max-width: 960px; margin: 0 auto;">
-  <div class="concept-grid">
-    
-    <div class="concept-text fade-in">
-      <h2 style="font-size: 2.2rem; margin-bottom: 24px;">What happens</h2>
-      <p>Guests do not just stay. They encounter a city that never existed.</p>
-      <p>Each room becomes a different memory of Tokyo. The hotel transforms from a place to stay into a place to experience an alternative reality.</p>
-    </div>
 
-    <div class="series-cards fade-in">
-      
-      <div class="series-card" style="margin-bottom: 32px; background: none; border: none; padding: 0;">
-        <span class="series-name">Installation</span>
-        <p style="color: var(--ink); font-size: 1rem; margin-bottom: 16px;">The project is implemented as a layered system:</p>
-        <ul style="list-style: none; font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--ash); line-height: 2.2;">
-          <li><span style="color: var(--ink);">• Anchor:</span> A central piece defining the space</li>
+  <div style="padding: 40px 0 80px; max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; border-bottom: 1px solid rgba(15,15,13,0.12); margin-bottom: 60px;">
+    <div style="flex: 1; min-width: 300px;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; margin-bottom: 32px; color: #0f0f0d;">What happens</h2>
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; color: #2a2a26; margin-bottom: 20px;">
+        Guests do not just stay. They encounter a city that never existed.
+      </p>
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; color: #2a2a26;">
+        Each room becomes a different memory of Tokyo. The hotel transforms from a place to stay into a place to experience an alternative reality.
+      </p>
+    </div>
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 32px;">
+      <div>
+        <span style="font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #9a9590; margin-bottom: 12px; display: block;">Installation</span>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #0f0f0d; margin-bottom: 12px;">The project is implemented as a layered system:</p>
+        <ul style="list-style: none; font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: #9a9590; line-height: 2.2;">
+          <li><span style="color: #0f0f0d;">• Anchor:</span> A central piece defining the space</li>
           <li><span style="color: var(--ink);">• Variation:</span> Multiple works distributed across rooms</li>
           <li><span style="color: var(--ink);">• Transition:</span> Subtle elements that appear in between</li>
         </ul>
-        <p style="font-size: 0.8rem; margin-top: 20px; color: var(--ash);">In addition, small cards are placed throughout the space. Not as explanation, but as fragments of the experience.</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; margin-top: 16px; color: #9a9590; font-style: italic;">In addition, small cards are placed throughout the space.</p>
       </div>
-
-      <div class="series-card" style="background: rgba(15,15,13,0.03); border-left: 2px solid var(--ink); padding: 24px;">
-        <span class="series-name">Pilot Scale</span>
-        <ul style="list-style: none; font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--ash); line-height: 1.8;">
+      <div style="background: rgba(15,15,13,0.03); border-left: 2px solid #0f0f0d; padding: 24px;">
+        <span style="font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--chemical); margin-bottom: 8px; display: block;">Pilot Scale</span>
+        <ul style="list-style: none; font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: #9a9590; line-height: 1.8;">
           <li>• 1 floor / 3–5 works</li>
           <li>• Optional card system</li>
         </ul>
-        <p style="font-size: 0.75rem; margin-top: 12px; font-style: italic; color: var(--ash);">Flexible depending on space and concept.</p>
       </div>
-
     </div>
   </div>
-</div>
 
-<hr class="rule" style="margin-bottom: 60px;">
   <div class="works-series-label">Ghost — Residual Tokyo</div>
   <div class="works-grid">
     <div class="work-item"><img src="images/img00038.jpg" alt="Threshold"><div class="work-label"><span>Ghost — 01</span><strong>Threshold</strong></div></div>
@@ -264,24 +240,6 @@
     <div class="tier"><span class="tier-num">Layer 01</span><h3>Concept Design</h3><p class="tier-desc">Spatial narrative development. Unique to each property.</p><div class="tier-price">¥3,000,000 — ¥10,000,000</div></div>
     <div class="tier"><span class="tier-num">Layer 02</span><h3>Production</h3><p class="tier-desc">Large-format output, installation coordination.</p><div class="tier-price">¥500,000 — ¥1,500,000<br>per work</div></div>
     <div class="tier"><span class="tier-num">Layer 03</span><h3>License</h3><p class="tier-desc">Annual licensing fee covering exclusive deployment rights.</p><div class="tier-price">¥1,000,000 — ¥5,000,000<br>per year</div></div>
-  </div>
-</div>
-
-<hr class="rule" style="max-width:960px;margin:0 auto;">
-
-<div class="pilot-section">
-  <div class="section-label">04 — Entry Point</div>
-  <div class="pilot-box">
-    <div class="pilot-left">
-      <h2>One floor.<br>One world.<br>One decision.</h2>
-      <p>The pilot package is designed for a single floor or thematic zone — a contained deployment that demonstrates the full scope of the IP.</p>
-    </div>
-    <div class="pilot-right">
-      <div class="pilot-line"><span class="label">Concept design</span><span class="value">¥3,000,000</span></div>
-      <div class="pilot-line"><span class="label">5 works (production)</span><span class="value">¥2,500,000</span></div>
-      <div class="pilot-line"><span class="label">Annual license</span><span class="value">¥1,000,000</span></div>
-      <div class="pilot-total"><span class="label">Total — Year 1</span><span class="value">¥6,500,000</span></div>
-    </div>
   </div>
 </div>
 
