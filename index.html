@@ -257,7 +257,7 @@
     <div class="contact-left">
       <h2>Let's build<br>something<br>that stays.</h2>
       <p>All inquiries regarding licensing, spatial deployment, or collaboration are handled directly.</p>
-      <a href="#" target="_blank" class="work-link">View the works</a>
+      <a href="https://yoshihisashowbiz.github.io/neverexisted/" target="_blank" class="work-link">View the works</a>
     </div>
     <div class="contact-right">
       <div class="contact-item"><span class="contact-type">Email</span><a href="mailto:yoshihisa.show.biz@gmail.com">yoshihisa.show.biz@gmail.com</a></div>
@@ -271,23 +271,6 @@
   <span>© 2026 Yoshihisa Sakamoto — A City That Never Existed</span>
   <span>All rights reserved — Licensing only</span>
 </footer>
-
-<script>
-  // Simple fade-in effect
-  document.addEventListener('DOMContentLoaded', () => {
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
-  });
-</script>
 
 </body>
 </html>
