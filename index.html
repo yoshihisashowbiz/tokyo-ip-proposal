@@ -89,6 +89,31 @@
   .works-series-label { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); padding: 8px 0; border-top: 1px solid var(--line); margin-bottom: 3px; }
 
   .implementation-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
+  
+  /* 追加テキスト用の詩的なスタイル */
+  .why-it-matters {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    grid-column: 1 / -1; /* グリッド全体を使用 */
+  }
+  .why-it-matters h3 {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 24px;
+  }
+  .why-it-matters p {
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--accent);
+    margin-bottom: 12px;
+    max-width: 600px;
+  }
+
   .model-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
   .model-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; }
   .model-intro h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; font-style: italic; }
@@ -230,6 +255,14 @@
           Scalable implementation. A pilot package designed to test the spatial narrative within a controlled environment.
         </p>
       </div>
+    </div>
+
+    <div class="why-it-matters">
+      <h3>Why this matters</h3>
+      <p>This is not an art installation.</p>
+      <p>It is a way to redefine how a hotel is experienced.</p>
+      <p>In a city like Tokyo, where everything already exists, what remains valuable is what has never existed.</p>
+      <p>This project introduces a layer of memory that cannot be replicated elsewhere.</p>
     </div>
   </div>
 </div>
