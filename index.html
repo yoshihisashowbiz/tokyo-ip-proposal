@@ -4,286 +4,138 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A City That Never Existed — Licensing Proposal</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --ink: #0f0f0d;
-    --paper: #f5f2ec;
-    --ash: #9a9590;
-    --line: rgba(15,15,13,0.12);
-    --accent: #2a2a26;
-  }
+:root {
+  --ink:#0f0f0d;
+  --paper:#f5f2ec;
+  --ash:#9a9590;
+  --line:rgba(15,15,13,0.12);
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 16px; scroll-behavior: smooth; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+body{
+  margin:0;
+  background:var(--paper);
+  font-family:'Cormorant Garamond',serif;
+  color:var(--ink);
+}
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.6;
-  }
+.container{max-width:960px;margin:0 auto;padding:0 40px;}
 
-  h1, h2, h3 { font-weight: 300; letter-spacing: -0.01em; }
-  .container { max-width: 960px; margin: 0 auto; padding: 0 40px; }
+.section-label{
+  font-family:'Courier Prime',monospace;
+  font-size:.6rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ash);
+  margin-bottom:60px;
+}
 
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0; z-index: 100; padding: 24px 40px;
-    display: flex; justify-content: space-between; align-items: center;
-    mix-blend-mode: multiply;
-  }
-  nav .wordmark { font-family: 'Courier Prime', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
-  nav .nav-right { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); }
+.licensing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
 
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: end; padding: 120px 40px 80px; max-width: 960px; margin: 0 auto; gap: 60px; }
-  .hero-label { font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); margin-bottom: 32px; display: block; }
-  .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.0; font-style: italic; margin-bottom: 40px; }
-  .hero h1 em { font-style: normal; display: block; font-size: 0.6em; letter-spacing: 0.05em; color: var(--ash); margin-bottom: 8px; font-family: 'Courier Prime', monospace; text-transform: uppercase; }
-  .hero-statement { font-size: 1rem; line-height: 1.8; color: var(--accent); max-width: 420px; border-left: 1px solid var(--line); padding-left: 24px; }
-  .hero-right { display: flex; flex-direction: column; gap: 1px; align-self: center; }
-  .hero-image-stack { position: relative; height: 480px; }
-  .hero-image-stack img { position: absolute; object-fit: cover; filter: grayscale(20%); }
-  .hero-image-stack img:nth-child(1) { width: 75%; height: 70%; top: 0; right: 0; }
-  .hero-image-stack img:nth-child(2) { width: 50%; height: 45%; bottom: 0; left: 0; filter: grayscale(40%) sepia(15%); }
+.tier{
+  border:1px solid var(--line);
+  padding:40px 32px;
+  display:flex;
+  flex-direction:column;
+}
 
-  .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
-  section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
-  .section-label { font-family: 'Courier Prime', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ash); margin-bottom: 60px; display: flex; align-items: center; gap: 16px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 120px; }
+.tier-label{
+  font-family:'Courier Prime';
+  font-size:.6rem;
+  color:var(--ash);
+  margin-bottom:12px;
+}
 
-  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .concept-lead { font-size: 1.8rem; line-height: 1.3; margin-bottom: 48px; font-style: italic; }
-  .staggered-lyric { font-size: 1.15rem; line-height: 1.9; margin-bottom: 40px; }
-  .staggered-lyric p { margin-bottom: 16px; position: relative; }
-  .staggered-lyric p em { display: block; font-size: 0.95rem; color: var(--ash); font-style: italic; margin-top: 4px; }
+.tier h3{
+  font-style:italic;
+  margin-bottom:12px;
+}
 
-  .works-section { padding: 100px 40px; max-width: 960px; margin: 0 auto; }
-  .works-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-bottom: 40px; }
-  .work-item { position: relative; aspect-ratio: 3/4; overflow: hidden; background: #eee; }
-  .work-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
-  .works-series-label { font-family: 'Courier Prime', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ash); padding: 8px 0; border-top: 1px solid var(--line); margin-bottom: 3px; }
+.tier p{
+  font-size:.9rem;
+  color:var(--ash);
+}
 
-  .impl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-  .impl-header { font-family: 'Courier Prime', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ash); margin-bottom: 24px; }
-  .impl-body p { font-size: 1.05rem; margin-bottom: 24px; color: var(--accent); }
-  .layered-list { list-style: none; font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--ash); line-height: 2.4; margin: 24px 0; }
-  .layered-list span { color: var(--ink); }
+.tier-price{
+  margin-top:auto;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
 
-  .why-it-matters { margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--line); grid-column: 1 / -1; }
-  .why-it-matters p { font-size: 1.2rem; font-style: italic; line-height: 1.8; color: var(--accent); margin-bottom: 24px; max-width: 720px; }
-  .culture-badge { margin-top: 48px; padding: 24px; border: 1px solid var(--line); font-family: 'Courier Prime', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); display: inline-block; }
+.tier-price .amount{
+  font-family:'Courier Prime';
+  font-size:1rem;
+}
 
-  .licensing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
-  .tier { padding: 40px 32px; border: 1px solid var(--line); display: flex; flex-direction: column; }
-  .tier-label { font-family: 'Courier Prime', monospace; font-size: 0.6rem; color: var(--ash); display: block; margin-bottom: 12px; }
-  .tier h3 { font-style: italic; margin-bottom: 12px; font-size: 1.2rem; }
-  .tier p { font-size: 0.85rem; color: var(--ash); line-height: 1.6; }
-  .tier-price { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--line); }
-  .tier-price .amount { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); display: block; margin-bottom: 4px; }
-  .tier-price .unit { font-family: 'Courier Prime', monospace; font-size: 0.75rem; font-weight: 700; color: var(--ink); }
-
-  /* 05 — Contact Layout Fix */
-  .contact-section { padding: 100px 40px 140px; max-width: 960px; margin: 0 auto; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-end; }
-  .contact-left h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-style: italic; line-height: 1.1; margin-bottom: 32px; }
-  .work-link { text-decoration: none; font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--ink); border: 1px solid var(--ink); padding: 18px 28px; display: inline-block; letter-spacing: 0.1em; transition: all 0.3s; }
-  .work-link:hover { background: var(--ink); color: var(--paper); }
-  
-  .contact-right { display: flex; flex-direction: column; gap: 32px; padding-bottom: 8px; }
-  .contact-item { border-bottom: 1px solid var(--line); padding-bottom: 16px; }
-  .contact-item .label { font-family: 'Courier Prime', monospace; font-size: 0.6rem; color: var(--ash); display: block; margin-bottom: 8px; text-transform: uppercase; }
-  .contact-item a { text-decoration: none; color: var(--ink); font-style: italic; font-size: 1.1rem; transition: color 0.2s; }
-  .contact-item a:hover { color: var(--ash); }
-
-  @media (max-width: 700px) {
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-    .hero-image-stack { display: none; }
-    .concept-grid, .impl-grid, .licensing-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    section, .works-section, .contact-section { padding: 60px 24px; }
-  }
+.tier-price .unit{
+  font-family:'Courier Prime';
+  font-size:.75rem;
+}
 </style>
 </head>
-<body id="top">
 
-<nav>
-  <a href="#top" class="wordmark">A City That Never Existed</a>
-  <span class="nav-right">Licensing Proposal — 2026</span>
-</nav>
+<body>
 
-<div class="hero">
-  <div class="hero-left">
-    <span class="hero-label">Yoshihisa Sakamoto — Tokyo</span>
-    <h1><em>A City That</em> Never<br>Existed</h1>
-    <p class="hero-statement">
-      TOKYO does not sell images. It introduces a world — deployed across space, sustained over time, calibrated to the specific character of each environment.<br><br>
-      A structured visual system built from Tokyo’s residual.
+<section id="licensing" class="container">
+
+<div class="section-label">04 — Licensing Model</div>
+
+<div class="licensing-grid">
+
+  <div class="tier">
+    <span class="tier-label">Pilot (Recommended)</span>
+    <h3>Initial Implementation</h3>
+
+    <div class="tier-price">
+      <span class="amount">¥5,500,000</span>
+    </div>
+
+    <p>
+      Concept design + 5 works.<br>
+      Initial deployment for one floor.
     </p>
   </div>
-  <div class="hero-right">
-    <div class="hero-image-stack">
-      <img src="images/img00038.jpg" alt="Fragment 01">
-      <img src="images/img00074.jpg" alt="Fragment 02">
+
+  <div class="tier">
+    <span class="tier-label">Standard</span>
+    <h3>Expanded Deployment</h3>
+
+    <div class="tier-price">
+      <span class="amount">From ¥8,000,000</span>
     </div>
+
+    <p>
+      Multi-room or multi-zone implementation.<br>
+      Configured for each environment.
+    </p>
   </div>
+
+  <div class="tier">
+    <span class="tier-label">Extension</span>
+    <h3>License / Updates</h3>
+
+    <div class="tier-price">
+      <span class="amount">¥1,000,000 — ¥5,000,000</span>
+      <span class="unit">per year</span>
+    </div>
+
+    <p>
+      Annual updates, seasonal variations,<br>
+      and extended deployment rights.
+    </p>
+  </div>
+
 </div>
 
-<hr class="rule" style="max-width:960px;margin:0 auto;">
-
-<section id="concept">
-  <div class="section-label">01 — Concept</div>
-  <div class="concept-grid">
-    <div>
-      <h2 class="concept-lead">We don’t create content.</h2>
-      <p style="font-size: 1.1rem; margin-bottom: 48px;">We create artifacts of a city that never existed.</p>
-      <div class="staggered-lyric">
-        <p>Not a beginning. <em>Just something that remained.</em></p>
-        <p>No one stays. <em>Still, something passes.</em></p>
-        <p>It wasn’t light. <em>What it left behind.</em></p>
-        <p>Nothing happens here. <em>That’s why it stays.</em></p>
-      </div>
-    </div>
-    <div style="align-self: flex-end; padding-bottom: 40px;">
-      <div class="staggered-lyric">
-        <p style="font-size: 1.4rem;">After everything ends,<br><strong>something remains.</strong></p>
-      </div>
-    </div>
-  </div>
 </section>
 
-<hr class="rule" style="max-width:960px;margin:0 auto;">
-
-<section class="works-section" id="works">
-  <div class="section-label">02 — The Works</div>
-  <div class="concept-grid" style="margin-bottom: 80px;">
-    <div class="impl-body">
-      <p>Each work is not an image of Tokyo.<br>It is a fragment of a city that never existed.</p>
-      <p style="color: var(--ash);">They do not document reality.<br>They suggest something that might have been there.</p>
-    </div>
-    <div class="impl-body">
-      <p>Subtle, but persistent.<br>Quiet, but irreversible.</p>
-      <p>What appears is not presence,<br>but <strong>residue.</strong></p>
-    </div>
-  </div>
-
-  <div class="works-series-label">Ghost — Residual Tokyo</div>
-  <div class="works-grid">
-    <div class="work-item"><img src="images/img00038.jpg" alt="01"></div>
-    <div class="work-item"><img src="images/img00064.jpg" alt="02"></div>
-    <div class="work-item"><img src="images/img00012.jpg" alt="03"></div>
-    <div class="work-item"><img src="images/img00022.jpg" alt="04"></div>
-    <div class="work-item"><img src="images/img00076.jpg" alt="05"></div>
-  </div>
-
-  <div class="works-series-label" style="margin-top:40px;">Chemical — Synthetic Tokyo</div>
-  <div class="works-grid">
-    <div class="work-item"><img src="images/img00055.jpg" alt="01"></div>
-    <div class="work-item"><img src="images/img00074.jpg" alt="02"></div>
-    <div class="work-item"><img src="images/img00007.jpg" alt="03"></div>
-    <div class="work-item"><img src="images/img00071.jpg" alt="04"></div>
-    <div class="work-item"><img src="images/img00045.jpg" alt="05"></div>
-  </div>
-</section>
-
-<hr class="rule" style="max-width:960px;margin:0 auto;">
-
-<section id="implementation">
-  <div class="section-label">03 — Implementation</div>
-  <div class="impl-grid">
-    <div class="impl-body">
-      <h3 class="impl-header">What happens</h3>
-      <p>Guests do not just stay.<br>They encounter a city that never existed.</p>
-      <p style="color:var(--ash);">Each room becomes a different memory of Tokyo. The hotel transforms from a place to stay into a place to experience an alternative reality.</p>
-    </div>
-    <div class="impl-body">
-      <h3 class="impl-header">Installation</h3>
-      <p>The project is implemented as a layered system:</p>
-      <ul class="layered-list">
-        <li><span>• Anchor:</span> A central work defining the space</li>
-        <li><span>• Variation:</span> Multiple works distributed across rooms</li>
-        <li><span>• Transition:</span> Subtle elements that appear in between</li>
-      </ul>
-      <p style="font-style:italic; border-left: 1px solid var(--line); padding-left: 20px;">
-        In addition, fragments appear throughout the space, sometimes in the form of small cards. Not as explanation, but as traces of the experience.
-      </p>
-    </div>
-  </div>
-
-  <div class="impl-grid" style="margin-top:80px;">
-    <div class="impl-body">
-      <h3 class="impl-header">Pilot</h3>
-      <p>The project can begin on a small scale:</p>
-      <ul class="layered-list" style="margin-bottom: 12px;">
-        <li>• 1 floor</li>
-        <li>• 3–5 works</li>
-        <li>• Optional card-based elements</li>
-      </ul>
-      <p style="font-size:0.85rem; color:var(--ash);">Flexible depending on space and concept.</p>
-    </div>
-  </div>
-
-  <div class="why-it-matters">
-    <p>This is not an art installation.</p>
-    <p>It is a way to redefine how a hotel is experienced.</p>
-    <p>In a city like Tokyo, where everything already exists, what remains valuable is what has never existed.</p>
-    <p>This project introduces a layer of memory that cannot be replicated elsewhere.</p>
-    <p>This aligns with hotels that position themselves as cultural platforms, not just places to stay.</p>
-    <div class="culture-badge">Designed for a hotel that values culture, not just stay.</div>
-  </div>
-</section>
-
-<hr class="rule" style="max-width:960px;margin:0 auto;">
-
-<section id="licensing">
-  <div class="section-label">04 — Licensing Model</div>
-  <div class="impl-grid">
-    <h2 style="font-style: italic; font-size: 2rem;">Three layers.<br>One continuous relationship.</h2>
-    <p style="color: var(--ash);">A structured visual system built from Tokyo's residual. It licenses a world — deployed across space, sustained over time, calibrated to the specific character of each environment.</p>
-  </div>
-  <div class="licensing-grid">
-    <div class="tier"><span class="tier-label">Layer 01</span><h3>Concept Design</h3><p>Spatial narrative development. How the series is deployed across floors, rooms, or environments. Unique to each property.</p><div class="tier-price"><span class="amount">¥3,000,000 — ¥10,000,000</span></div></div>
-    <div class="tier"><span class="tier-label">Layer 02</span><h3>Production</h3><p>Large-format output, material specification, installation coordination. Each work produced for its specific context.</p><div class="tier-price"><span class="amount">¥500,000 — ¥1,500,000</span><span class="unit">per work</span></div></div>
-    <div class="tier"><span class="tier-label">Layer 03</span><h3>License</h3><p>Annual licensing fee covering exclusive deployment rights. Renewable. Seasonal rotation available as extension.</p><div class="tier-price"><span class="amount">¥1,000,000 — ¥5,000,000</span><span class="unit">per year</span></div></div>
-  </div>
-</section>
-
-<hr class="rule" style="max-width:960px;margin:0 auto;">
-
-<section class="contact-section" id="contact">
-  <div class="section-label">05 — Contact</div>
-  <div class="contact-grid">
-    <div class="contact-left">
-      <h2>Let's build<br>something<br>that stays.</h2>
-      <a href="https://yoshihisashowbiz.github.io/neverexisted/" target="_blank" class="work-link">VIEW THE WORKS →</a>
-    </div>
-    <div class="contact-right">
-      <div class="contact-item">
-        <span class="label">Email</span>
-        <a href="mailto:yoshihisa.show.biz@gmail.com">yoshihisa.show.biz@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <span class="label">Instagram</span>
-        <a href="https://www.instagram.com/yoshihisa_sakamoto/" target="_blank">@yoshihisa_sakamoto</a>
-      </div>
-      <div class="contact-item">
-        <span class="label">Author</span>
-        <span style="font-style: italic; font-size: 1.1rem;">Yoshihisa Sakamoto — Tokyo</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer style="border-top: 1px solid var(--line); padding: 40px; max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-family:'Courier Prime'; font-size:0.65rem; color:var(--
+</body>
+</html>
